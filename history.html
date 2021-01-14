@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    history
+{% endblock %}
+
+{% block main %}
+    
+      
+
+       <table class="table table-striped">
+      <thread>
+        <tr>
+          <th>Name</th>
+          <th>Symbol</th>
+          <th>Price</th>
+          <th>Shares</th>
+          <th>TOTAL</th>
+          <th>Time</th>
+          <th>Date</th>
+          
+          
+        </tr>
+        {% for trans in transaction  %}
+        
+         
+        <tr>
+          <td>{{name[loop.index -1]['name']}}</td>
+          <td>{{transaction[loop.index -1].get('symbol')}}</td>
+          <td>{{transaction[loop.index -1]['price']}} </td>
+          <td>{{transaction[loop.index -1].get('quantity')}}</td>
+          {% if 0 > transaction[loop.index -1].get('quantity') %}
+          <td>{{((transaction[loop.index -1]['price'] * transaction[loop.index -1].get('quantity'))|round(2))*(-1)}}</td>
+          {% else %}
+          <td>{{(transaction[loop.index -1]['price'] * transaction[loop.index -1].get('quantity'))|round(2)}}</td>
+          {% endif %} 
+          <td>{{transaction[loop.index -1]['time']}}</td>
+          <td>{{transaction[loop.index -1]['date']}}<td/>
+        </tr>
+        
+       
+       {% endfor %}  
+      
+      
+
+
+{% endblock %}

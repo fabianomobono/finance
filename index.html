@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    
+      
+      
+</form>
+    
+    <table class="table table-striped">
+      <thread>
+        <tr>
+          <th>Name</th>
+          <th>Symbol</th>
+          <th>Price</th>
+          <th>Shares</th>
+          <th>TOTAL</th>
+          
+          
+        </tr>
+        {% for share in portfolio  %}
+        {% if portfolio[loop.index -1].get('SUM(quantity)') > 0 %}
+         
+        <tr>
+          <td>{{quote[loop.index -1]['name']}}</td>
+          <td>{{portfolio[loop.index -1].get('symbol')}}</td>
+          <td>{{l[loop.index -1]}} </td>
+          <td>{{portfolio[loop.index -1].get('SUM(quantity)')}}</td>
+          <td>{{f[loop.index -1]}}</td>
+        </tr>
+        
+       {% endif %}
+       {% endfor %}  
+      <tr>
+        <th>Cash</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <td>{{cash}}</td>
+        </tr>
+        <tr>
+          <th>Grand Total</th>
+          <th></th>
+        <th></th>
+        <th></th>
+          
+          
+          <th>${{gt}}</th>
+        </tr>
+      </thread>
+
+      
+{% endblock %}

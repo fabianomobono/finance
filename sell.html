@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+   <form action="/sell" method="POST">
+     
+     <div class="form-group">
+       <select class="form-control" name="symbol">
+         <option disabled selected value>Symbol</option>
+         {% for line in portfolio %}
+         <option value='{{portfolio[loop.index-1].get("symbol")}}'>{{portfolio[loop.index -1].get('symbol')}}</option>
+         {% endfor %}
+       </select>
+     </div>
+     <div class="form-group">
+       <input autocomplete='off' class="form-control" default ="1" min="1" name="shares" placeholder="shares" type="number">
+     </div>
+     <button class="btn btn-primary" type="submit">Sell</button>
+{% endblock %}
+
